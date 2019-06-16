@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!---telling user language to use--->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Fort Worth Quiz App</title>
+    <meta name="description" content="A quiz on facts about Fort Worth">
+    <!---responsive viewport tag--->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="quiz.js"></script>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="currentScore">
+        <ul>
+          <li><img class="logo" src="http://www.simpleimageresizer.com/_uploads/photos/46a281d6/download_1_25.jpg" alt="cowboy hat"/>
+          <li>Score: <span class="score">0</span></li>
+        </ul>
+      </div>
+    </header>
+  <main>
+    <!--Feedback-Incorrect Page-->
+      <h2>Sorry, that's incorrect...</h2>
+      <p>The correct answer was C.</p>
+      <button id="nextQuestionButton">Next question</button>
+  </main>
+    <footer>
+      <h3>Question: <span class="questionNumber">0</span>/10</h3>
+     </footer>
+  </body>
+</html>
