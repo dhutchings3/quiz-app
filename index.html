@@ -1,20 +1,36 @@
 <!DOCTYPE html>
+<!---telling user language to use--->
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="main.css"/>
     <title>Fort Worth Quiz App</title>
-    <script src="datastore.js"></script>
+    <meta name="description" content="A quiz on facts about Fort Worth">
+    <!---responsive viewport tag--->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="quiz.js"></script>
     <script src="index.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>How well do you know Fort Worth?</h1>
+      <div class="currentScore">
+        <ul>
+          <li><img class="logo" src="http://www.simpleimageresizer.com/_uploads/photos/46a281d6/download_1_25.jpg" alt="cowboy hat"/>
+          <li>Score: <span class="score">0</span></li>
+        </ul>
+      </div>
     </header>
-    <main>
-
-    </main>
-    <footer></footer>
-</body>
+  <main>
+    <!---Quiz start page--->
+    <div class="quizStart">
+      <h1>How well do you know Fort Worth?</h1>
+      <button type="button" class="startButton">Let's find out!</button>
+      </div>
+      <a href=“main.html">Start!</a>
+  </main>
+  </body>
+  <footer>
+    <h3>Question: <span class="questionNumber">0</span>/10</h3>
+  </footer>
 </html>
