@@ -12,21 +12,26 @@ function generateQuestionString() {
             <form>
             <fieldset>
             <label class='answerChoice'>
-            <input type='radio' value='${STORE[questionNumber].answer[0]}' name='answer' required>
-            <span class='answer'>${STORE[questionNumber].answer[0]}</span></label>
+                <input type='radio' value='${STORE[questionNumber].answer[0]}' name='answer' required></input>
+                <span class='answer'>${STORE[questionNumber].answer[0]}</span>
+            </label>
             <br>
             <label class='answerChoice'>
-            <input type='radio' value='${STORE[questionNumber].answer[1]}' name='answer' required>
-            <span class='answer'>${STORE[questionNumber].answer[1]}</span></label>
+                <input type='radio' value='${STORE[questionNumber].answer[1]}' name='answer' required></input>
+                <span class='answer'>${STORE[questionNumber].answer[1]}</span>
+            </label>
             <br>
             <label class='answerChoice'>
-            <input type='radio' value='${STORE[questionNumber].answer[2]}' name='answer' required>
-            <span class='answer'>${STORE[questionNumber].answer[2]}</span></label>
+                <input type='radio' value='${STORE[questionNumber].answer[2]}' name='answer' required></input>
+                <span class='answer'>${STORE[questionNumber].answer[2]}</span>
+            </label>
             <br>
             <label class='answerChoice'>
-            <input type='radio' value='${STORE[questionNumber].answer[3]}' name='answer' required>
-            <span class='answer'>${STORE[questionNumber].answer[3]}</span></label>
+                <input type='radio' value='${STORE[questionNumber].answer[3]}' name='answer' required></input>
+                <span class='answer'>${STORE[questionNumber].answer[3]}</span>
+            </label>
             <br>
+            </div>
             <button type='submit'>Continue</button>
             </fieldset>
             </form>
@@ -89,13 +94,13 @@ function returnFeedback() {
 }
 
 function ifAnswerIsCorrect() {
-    $('.questionForm').html(`<div class="correctFeedback"><p>That's Correct!</p><button type="button" class="nextButton">Continue</button></div>`);
+     $('.questionForm').html(`<div class="correctFeedback"><p>That's Correct!</p><button type= "button" class="nextButton">Continue</button></div>`);
 
 }
 
 function ifAnswerIsWrong() {
     let correctAnswer = `${STORE[question.number].correctAnswer}`;
-    $('.questionForm').html(`<div class="correctFeedback"><p>Sorry, the correct answer was "${correctAnswer}"</p><button type="button" class="nextButton">Continue</button></div>`);
+     $('.questionForm').html(`<div class="correctFeedback"><p>Sorry, the correct answer was "${correctAnswer}"</p><button type= "button" class="nextButton">Continue</button></div>`);
 
 }
 
@@ -108,7 +113,7 @@ function updateScore() {
 //after user is given feedback they are shown the next question in the quiz
 function returnNextQuestion() {
     console.log('`returnNextQuestion` ran');
-    $('main').on('click','.nextButton', function (event) {
+    $(document).on('click','form', function (event) {
         changeQuestionNumber();
         askQuestion();
         userSelectAnswer();
@@ -142,7 +147,6 @@ function beginQuiz() {
 generateQuiz();   
 userSelectAnswer();
 returnFeedback();
-console.log('test'); 
 returnNextQuestion();
 }
 
