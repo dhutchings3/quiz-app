@@ -107,5 +107,5 @@ const STORE = [
         'A rattlesnake' 
         ],
       correctAnswer: 'A panther'
-    }
+    },
 ];

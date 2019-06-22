@@ -1,34 +1,31 @@
 <!DOCTYPE html>
-<!---telling user language to use--->
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Fort Worth Quiz App</title>
     <meta name="description" content="A quiz on facts about Fort Worth">
-    <!---responsive viewport tag--->
     <meta name="viewport" content="width=device-width">
     <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="quiz.js"></script>
-    <script src="index.js"></script>
   </head>
   <body>
     <header>
       <div class="currentScore">
         <ul>
-            <li>cowboy hat logo</li>
             <li>Score: <span class ="score">0</span></span></li>
+            <li>Question count: <span class="questionNumber">0</span>/10</li>
         </ul>
       </div>
     </header>
-    <main>
+    <main role="main">
     <div class="quizStart">
       <h1>How well do you know Fort Worth, Texas?</h1>
       <button type="button" class="startButton">Let's find out!</button>
-      </div>
-      <div class="questionForm"></div>
-      <h3>Question count: <span class="questionNumber">0</span>/10</h3>
+    </div>
+    <div class="questionForm"></div>
     </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="quiz.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>

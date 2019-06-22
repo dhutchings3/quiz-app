@@ -3,44 +3,49 @@ let questionNumber = 0;
 let score = 0;
 
 //sets up question from quiz
-function generateQuestionString() {
-    console.log('generating question from quiz');
+function generateQuestion() {
     if (questionNumber < STORE.length) {
         return `
-            <div class="question-${questionNumber}">
+            <div class="questionForm-${questionNumber}">
             <h2>${STORE[questionNumber].question}</h2>
             <form>
             <fieldset>
-            <label class='answerChoice'>
-                <input type='radio' value='${STORE[questionNumber].answer[0]}' name='answer' required></input>
-                <span class='answer'>${STORE[questionNumber].answer[0]}</span>
-            </label>
-            <br>
-            <label class='answerChoice'>
-                <input type='radio' value='${STORE[questionNumber].answer[1]}' name='answer' required></input>
-                <span class='answer'>${STORE[questionNumber].answer[1]}</span>
-            </label>
-            <br>
-            <label class='answerChoice'>
-                <input type='radio' value='${STORE[questionNumber].answer[2]}' name='answer' required></input>
-                <span class='answer'>${STORE[questionNumber].answer[2]}</span>
-            </label>
-            <br>
-            <label class='answerChoice'>
-                <input type='radio' value='${STORE[questionNumber].answer[3]}' name='answer' required></input>
-                <span class='answer'>${STORE[questionNumber].answer[3]}</span>
-            </label>
-            <br>
+            <div>
+                <label class='answerChoice'>
+                    <input type='radio' value='${STORE[questionNumber].answer[0]}' name='answer' required></input>
+                    <span class='answer'>${STORE[questionNumber].answer[0]}</span>
+                </label>
+                <br>
+                <label class='answerChoice'>
+                    <input type='radio' value='${STORE[questionNumber].answer[1]}' name='answer' required></input>
+                    <span class='answer'>${STORE[questionNumber].answer[1]}</span>
+                </label>
+                <br>
+                <label class='answerChoice'>
+                    <input type='radio' value='${STORE[questionNumber].answer[2]}' name='answer' required></input>
+                    <span class='answer'>${STORE[questionNumber].answer[2]}</span>
+                </label>
+                <br>
+                <label class='answerChoice'>
+                    <input type='radio' value='${STORE[questionNumber].answer[3]}' name='answer' required></input>
+                    <span class='answer'>${STORE[questionNumber].answer[3]}</span>
+                </label>
             </div>
-            <button type='submit'>Continue</button>
+            </br>
+            <button type='submit'class= "submitButton">Continue</button>
             </fieldset>
             </form>
             </div>`;
     } else {
-        finishQuiz()
-        restartQuiz();
-        $('.questionNumber').text(10)
-    }
+        quizResults();
+    };
+
+}
+
+//change question number
+function changeQuestionNumber() {
+    questionNumber++;
+    $('.questionNumber').text(questionNumber + 1);
 }
 
 //increase score
@@ -48,17 +53,11 @@ function changeScore() {
     score++;
 }
 
-//change question number
-function changeQuestionNumber() {
-    questionNumber ++;
-    $('.questionNumber').text(questionNumber+1);
-}
-
 //when user clicks start button first question is returned
 function generateQuiz() {
     $('.quizStart').on('click', '.startButton', function (event) {
-        event.preventDefault();
-        $('.quizStart').remove();
+        $('.quizStart').css('display', 'none');
+        $('questionForm').css('display', 'block');
         $('.questionNumber').text(1);
         askQuestion();
     });
@@ -66,8 +65,7 @@ function generateQuiz() {
 
 //user is shown question from quiz
 function askQuestion() {
-    $('.questionForm').html(generateQuestionString());
-    console.log('`askQuestion` ran');
+    $('.questionForm').html(generateQuestion());
 }
 
 //user chooses one of the four answers and selects the submit button
@@ -75,32 +73,37 @@ function userSelectAnswer() {
     console.log('`userSelectAnswer` ran');
     $(document).on('submit', 'form', function (event) {
         event.preventDefault();
-        returnFeedback();
+        let selected = $('input:checked');
+        let answer = selected.val();
+        let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
+        if (answer === correctAnswer) {
+            selected.parent().addClass('right');
+            ifAnswerIsCorrect();
+        } else {
+            selected.parent().addClass('wrong');
+            ifAnswerIsWrong();
+            }
     });
 }
 
-//user is given a message if the answer chosen was right or wrong
-function returnFeedback() {
-    console.log('`returnFeedback` ran');
-    let selected = $('input:checked');
-    let answer = selected.val();
-    let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-    if (answer === correctAnswer) {
-        ifAnswerIsCorrect();
-        updateScore();
-    } else {
-        ifAnswerIsWrong();
-        }    
-}
-
 function ifAnswerIsCorrect() {
-     $('.questionForm').html(`<div class="correctFeedback"><p>That's Correct!</p><button type= "button" class="nextButton">Continue</button></div>`);
-
+    correctAnswerFeedback();
+    updateScore();
 }
 
 function ifAnswerIsWrong() {
-    let correctAnswer = `${STORE[question.number].correctAnswer}`;
-     $('.questionForm').html(`<div class="correctFeedback"><p>Sorry, the correct answer was "${correctAnswer}"</p><button type= "button" class="nextButton">Continue</button></div>`);
+    incorrectAnswerFeedback();
+}
+
+function correctAnswerFeedback() {
+     $('.questionForm').html(`<div id=correct><p>That's Correct!</p><button type= "button" class="nextButton">Continue</button></div>`);
+
+}
+
+function incorrectAnswerFeedback() {
+    let question = `${STORE[question.number]}`
+    let correct = `${STORE[question.number].correctAnswer}`;
+     $('.questionForm').html(`<div id="wrong"><p>Sorry, the correct answer was "${correct}"</p><button type= "button" class="nextButton">Continue</button></div>`);
 
 }
 
@@ -112,8 +115,7 @@ function updateScore() {
  
 //after user is given feedback they are shown the next question in the quiz
 function returnNextQuestion() {
-    console.log('`returnNextQuestion` ran');
-    $(document).on('click','form', function (event) {
+    $('main').on('click','.nextButton', function (event) {
         changeQuestionNumber();
         askQuestion();
         userSelectAnswer();
@@ -122,32 +124,50 @@ function returnNextQuestion() {
 
 //user is shown final score on the last page of the quiz and given a message if they scored
 //a certain number or above and another message if they score below
-function finishQuiz () {
+function quizResults () {
 console.log('`finsihQuiz` ran');
     if (score >= 8) {
-        $('.questionForm').html(`<div class='results'<h3>You must be a Fort Worth Native!</h3><button class='restartQuiz'>Retake Quiz></button></div>`)
+        $('.questionForm').html(`<div class='results'<h3>You must be a Fort Worth Native!</h3><button class='restartQuiz'>Retake Quiz</button</div>`);
+        restartQuiz();
+        $('.questionNumber').text(10);
     }
     else if (score < 8 && score>= 5) {
-        $('.questionForm').html(`<div class='results'<h3>You might live in Texas, but not Cowtown</h3><button class='restartQuiz'>Retake Quiz></button></div>`)
+        $('.questionForm').html(`<div class='results'<h3>You might live in Texas, but not Cowtown</h3><button class='restartQuiz'>Retake Quiz</button></div>`);
+        restartQuiz();
+        $('.questionNumber').text(10);
     }
     else {
-        $('.questionForm').html(`<div class='results'<h3>Time to brush up on your Fort Worth facts...</h3><button class='restartQuiz'>Retake Quiz></button></div>`)
+        $('.questionForm').html(`<div class='results'<h3>Time to brush up on your Fort Worth facts...</h3><button class='restartQuiz'>Retake Quiz</button></div>`);
+        restartQuiz();
+        $('.questionNumber').text(10);
     }
 }
 
 //reloads page to starting screen
 function restartQuiz() {
-    $('main').on('click', '.restartButton', function (event) {
-        location.reload();
+    $('main').on('click', '.restartQuiz', function (event) {
+        questionNumber = 0;
+        $('.questionNumber').text(1);
+        score=0;
+        $('.score').text(0);
+        $('.questionForm').css('display', 'block');
+        refreshQuiz();
     });
+}
+
+//refreshQuiz
+function refreshQuiz () {
+    generateQuiz();
+    askQuestion();
+    userSelectAnswer();
 }
 
 //callback to run quiz functions 
 function beginQuiz() {
-generateQuiz();   
+generateQuiz(); 
 userSelectAnswer();
-returnFeedback();
 returnNextQuestion();
+restartQuiz();
 }
 
-$(beginQuiz);
+$(beginQuiz());
