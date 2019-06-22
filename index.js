@@ -70,7 +70,7 @@ function askQuestion() {
 
 //user chooses one of the four answers and selects the submit button
 function userSelectAnswer() {
-    $(document).on('submit', 'form', function (event) {
+    $('main').on('click', '.submitButton', function (event) {
         event.preventDefault();
         let selected = $('input:checked');
         let answer = selected.val();
@@ -116,14 +116,12 @@ function returnNextQuestion() {
     $('main').on('click','.nextButton', function (event) {
         changeQuestionNumber();
         askQuestion();
-        userSelectAnswer();
     });
 }
 
 //user is shown final score on the last page of the quiz and given a message if they scored
 //a certain number or above and another message if they score below
 function quizResults () {
-console.log('`finsihQuiz` ran');
     if (score >= 8) {
         $('.questionForm').html(`<div class='results'<h3>You must be a Fort Worth Native!</h3><button class='restartQuiz'>Retake Quiz</button</div>`);
         restartQuiz();
