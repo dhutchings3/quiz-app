@@ -70,7 +70,6 @@ function askQuestion() {
 
 //user chooses one of the four answers and selects the submit button
 function userSelectAnswer() {
-    console.log('`userSelectAnswer` ran');
     $(document).on('submit', 'form', function (event) {
         event.preventDefault();
         let selected = $('input:checked');
@@ -82,7 +81,7 @@ function userSelectAnswer() {
         } else {
             selected.parent().addClass('wrong');
             ifAnswerIsWrong();
-            }
+        }
     });
 }
 
@@ -96,14 +95,13 @@ function ifAnswerIsWrong() {
 }
 
 function correctAnswerFeedback() {
-     $('.questionForm').html(`<div id=correct><p>That's Correct!</p><button type= "button" class="nextButton">Continue</button></div>`);
+     $('.questionForm').html(`<div id="right"><p>That's Correct!</p><button type= "button" class="nextButton">Continue</button></div>`);
 
 }
 
 function incorrectAnswerFeedback() {
-    let question = `${STORE[question.number]}`
-    let correct = `${STORE[question.number].correctAnswer}`;
-     $('.questionForm').html(`<div id="wrong"><p>Sorry, the correct answer was "${correct}"</p><button type= "button" class="nextButton">Continue</button></div>`);
+    let correctAnswer = `${STORE[questionNumber].correctAnswer}`
+     $('.questionForm').html(`<div id="wrong"><p>Sorry, the correct answer was ${correctAnswer}</p><button type= "button" class="nextButton">Continue</button></div>`);
 
 }
 
