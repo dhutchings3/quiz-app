@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    font-size: 24px;
+    font-size: 30px;
     background: linear-gradient(
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
@@ -68,7 +68,7 @@ main {
     display: inline-block;
 }
 
-h2 {
+h2, h3 {
     font-size: 30px;
 }
 
@@ -103,7 +103,7 @@ label {
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease-out;
-    line-height: 15px;
+    line-height: 25px;
 }
 
 input:checked {
@@ -144,13 +144,22 @@ form button {
     text-align: left;
 }
 
-.wrong, .right {
+#wrong {
     display: block;
-    margin: 0 auto; 
-    text-align: center;
+    text-align: center;        
+    width: 100%;
+    margin: 0;
 }
 
-.nextButton, .retakeQuiz {
+
+#right {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+.nextButton, .restartQuiz {
 margin-top: 20px;
 width: 100%;
 color: #996600;
@@ -160,17 +169,24 @@ border-radius: 12px;
 background: #FFF9F2;
 }
 
+.results {
+    font-size: 30px;
+}
+
 @media screen and (min-width: 768px){
 
     h1{ 
         font-size: 70px;
     }
-    h2{
+    h2, p, h3{
         font-size: 40px;
    }
-   .questionForm{
-       width: 50%;
+   .questionForm {
+       width: 75%;
    }
+   .nextButton {
+        width: 75%;
+    }
 
 }
 

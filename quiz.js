@@ -81,7 +81,7 @@ const STORE = [
       answer: [
         'It is home to the largest honky-tonk in the world',
         'It has the world’s only twice a day cattle drive',
-        'They have a Cultural District containing five world-class museums, designed by renowned architects, in a walkable, landscaped area.',
+        'They have five world-class museums',
         'It is home to the University of Texas'
         ],
       correctAnswer: 'It is home to the University of Texas'
