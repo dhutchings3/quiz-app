@@ -67,7 +67,8 @@ function askQuestion() {
 //user chooses one of the four answers and selects the submit button
 function userSelectAnswer() {
 
-    $('main').on('click', '.submitButton', function (event) {
+    $('main').on('submit', '.submitButton', function () {
+        console.log('testran');
         event.preventDefault();
         let selected = $('input:checked');
         let answer = selected.val();
