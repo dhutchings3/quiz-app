@@ -88,7 +88,7 @@ const STORE = [
     },
 
     {
-      question: 'ort Worth is part of the DFW Metroplex which is one of the largest in the U.S., where does it rank?',
+      question: 'Fort Worth is part of the DFW Metroplex which is one of the largest in the U.S., where does it rank?',
       answer: [
         '2nd largest',
         '4th largest',

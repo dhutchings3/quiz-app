@@ -1,41 +1,176 @@
+html {
+    height: 100%;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-align: center;
-}
-
-body {
-    font-size: 18px;
-    background-color: #ffffff;
     font-family: 'Shadows Into Light', cursive;
 }
 
-.quizQuestions {
-    clear: right;
-    width: 600px;
-    height: 400px;
-    display: inline-block;
-    position: relative;
-    border-style: none;
+body {
+    font-size: 24px;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ), url('https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_587,q_75,w_1178/v1/clients/fortworth/Blog.FamilyTime9_52836d14-f0ae-5102-046bb9e56bd27f40.gif') fixed;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;   
+    color: white;
+    text-align: center;
 }
 
-button, input {
-    background: rgb(216, 216, 201);
-    color: rgb(70, 70, 57);
-  }
+header {
+    width: 100%;
+    margin-top: 20px;
+    display: inline-block;
+}
 
 ul li {
     list-style: none;
     float: right;
-    padding-right: 20px;
+    padding-right: 40px;
+    font-size: 20px;
+}
 
+.quizStart {
+    position: relative;
+    top: 100px;
+}
+
+h1 {
+    display: inline-block;
+    font-size: 50px;
+    padding: 0 20px;
+}
+
+.quizStart img {
+    margin-top: 10px;
+    width: 25%;
+}
+
+.startButton {
+    margin-top: 20px;
+    width: 35%;
+    color: #996600;
+    font-size: 24px;
+    border: solid #996600 1px;
+    border-radius: 12px;
+    background: #FFF9F2;
 }
 
 main {
-    border: 2px black solid;
-    width: 600px;
     height: 400px;
+    padding: 5px 0;
     display: inline-block;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.questionForm {
+    width: 75%;
+    margin: 0 auto;
+}
+fieldset {
+    border: white 1px solid;;
+}
+
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    transition: 0.2s all linear;
+    outline: none;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+}
+
+label {
+    padding: 20px;
+    margin-bottom: 0px;
+    display: flex;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    line-height: 15px;
+}
+
+input:checked {
+    border: 8px solid #996600;
+}
+
+input[type=radio] {
+    flex: 0 0 auto;
+    margin-right: 10px;
+}
+
+.answerSet {
+    margin: 0 auto;
+    width: 100%;
+}
+
+label:hover, label:focus {
+    color: #ffe6cc;
+}
+
+label .answerChoice {
+    list-style: none;
+    height: 30px;
+}
+
+form button {
+    padding: 20px;
+    border: none;
+    background-color: #ffe6cc;
+    color: #996600;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+}
+
+.wrong, .right {
+    display: block;
+    margin: 0 auto; 
+    text-align: center;
+}
+
+.nextButton, .retakeQuiz {
+margin-top: 20px;
+width: 100%;
+color: #996600;
+font-size: 24px;
+border: solid #996600 1px;
+border-radius: 12px;
+background: #FFF9F2;
+}
+
+@media screen and (min-width: 768px){
+
+    h1{ 
+        font-size: 70px;
+    }
+    h2{
+        font-size: 40px;
+   }
+   .questionForm{
+       width: 50%;
+   }
 
 }
+

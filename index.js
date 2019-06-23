@@ -10,29 +10,25 @@ function generateQuestion() {
             <h2>${STORE[questionNumber].question}</h2>
             <form>
             <fieldset>
-            <div>
+            <div class="answerSet">
                 <label class='answerChoice'>
-                    <input type='radio' value='${STORE[questionNumber].answer[0]}' name='answer' required></input>
+                    <input type='radio' value='${STORE[questionNumber].answer[0]}' name='answer' required>
                     <span class='answer'>${STORE[questionNumber].answer[0]}</span>
                 </label>
-                <br>
                 <label class='answerChoice'>
-                    <input type='radio' value='${STORE[questionNumber].answer[1]}' name='answer' required></input>
+                    <input type='radio' value='${STORE[questionNumber].answer[1]}' name='answer' required>
                     <span class='answer'>${STORE[questionNumber].answer[1]}</span>
                 </label>
-                <br>
                 <label class='answerChoice'>
-                    <input type='radio' value='${STORE[questionNumber].answer[2]}' name='answer' required></input>
+                    <input type='radio' value='${STORE[questionNumber].answer[2]}' name='answer' required>
                     <span class='answer'>${STORE[questionNumber].answer[2]}</span>
                 </label>
-                <br>
                 <label class='answerChoice'>
-                    <input type='radio' value='${STORE[questionNumber].answer[3]}' name='answer' required></input>
+                    <input type='radio' value='${STORE[questionNumber].answer[3]}' name='answer' required>
                     <span class='answer'>${STORE[questionNumber].answer[3]}</span>
                 </label>
             </div>
-            </br>
-            <button type='submit'class= "submitButton">Continue</button>
+            <button type='submit' class= "submitButton">Continue</button>
             </fieldset>
             </form>
             </div>`;
@@ -70,6 +66,7 @@ function askQuestion() {
 
 //user chooses one of the four answers and selects the submit button
 function userSelectAnswer() {
+
     $('main').on('click', '.submitButton', function (event) {
         event.preventDefault();
         let selected = $('input:checked');
