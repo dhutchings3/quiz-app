@@ -67,7 +67,7 @@ function askQuestion() {
 //user chooses one of the four answers and selects the submit button
 function userSelectAnswer() {
 
-    $(document).on('submit', '.questionForm', function () {
+    $('main').on('submit', '.questionForm', function () {
         event.preventDefault();
         let selected = $('input:checked');
         let answer = selected.val();

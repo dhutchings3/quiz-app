@@ -177,6 +177,7 @@ background: #FFF9F2;
 
     h1{ 
         font-size: 70px;
+        display: block;
     }
     h2, p, h3{
         font-size: 40px;
